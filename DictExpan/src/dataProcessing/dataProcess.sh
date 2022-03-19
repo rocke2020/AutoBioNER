@@ -7,12 +7,12 @@ DRY_RUN=${DRY_RUN:- 0}
 EXTRACT_RELATIONAL_SKIPGRAMS=${EXTRACT_RELATIONAL_SKIPGRAMS:- 0}
 ## The embedding method used, can be PTE or word2vec
 EMBEDDING_METHOD=word2vec
-
+echo 'DRY_RUN:' $DRY_RUN
 echo 'Corpus Name:' $data
 echo 'Current Path:' $path
 
 echo 'Data preprocessing start'
-
+## If use the script under corpusProcessing to generate the corpus, set DRY_RUN=0, otherwise, set it to be 1
 ## If DRY_RUN is 0, run from the beginning
 if [ $DRY_RUN -eq 1 ]; then
 	echo 'generating sentences.json and entity2id.txt'

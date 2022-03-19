@@ -13,11 +13,7 @@ import re
 from collections import deque
 from pycorenlp import StanfordCoreNLP
 from pprint import pprint
-from utilities.common_utils import get_logger
-import logging
-
-
-logger = get_logger(name=__name__, log_file=None, log_level=logging.DEBUG, log_level_name='')
+import ast
 
 
 class AutoPhraseOutput(object):
@@ -49,12 +45,11 @@ class AutoPhraseOutput(object):
             "annotators": "tokenize,ssplit,pos",
             "outputFormat": "json"
         })
-        logger.info(f'{res}')
         output_sents = []
         if 'sentences' not in res:
                 return []
+        res = ast.literal_eval(res)
         for sent in res['sentences']:
-            logger.info(sent)
             ## a new sentence
             output_token_list = []
             output_pos_list = []
